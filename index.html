@@ -13,29 +13,12 @@
             document.documentElement.classList.remove('dark');
         }
     </script>
+    <script src="assets/js/modoescuro.js" defer></script>
+	<script src="assets/js/main.js" defer></script>
+	
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        // Configuração do Tailwind para Modo Escuro
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            primary: '#d12d6d', // Rosa do layout
-                            dark: '#111827'
-                        }
-                    }
-                }
-            }
-        }
 
-        function toggleDarkMode() {
-            document.documentElement.classList.toggle('dark');
-        }
-    </script>
-		<script src="assets/js/main.js" defer></script>
     <style>
         .glass-card {
             background: rgba(255, 255, 255, 0.9);
@@ -46,6 +29,7 @@
         }
     </style>
 </head>
+
 <body class="bg-slate-50 text-slate-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
 
     <div id="header-placeholder"></div>
