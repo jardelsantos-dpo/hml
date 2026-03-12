@@ -8,6 +8,11 @@
     background: rgba(31, 41, 55, 0.8);
 }
 
+.active-filter {
+	background-color: #d12d6d; /* brand-primary */
+	color: white;
+	border-color: #d12d6d;
+}
 
 /* HEADER RESPONSIVO */
 #header-placeholder nav {
@@ -83,5 +88,26 @@ nav a.text-brand-primary::after {
 @media (max-width: 767px) {
     nav a.text-brand-primary::after {
         display: none;
+    }
+}
+
+/* Garante que palavras longas quebrem se necessário e não estoure a tela */
+h1, h2, h3 {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Ajuste fino para containers no mobile */
+@media (max-width: 640px) {
+    .container {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+    }
+    
+    /* Reduz o espaçamento superior para não empurrar o conteúdo muito para baixo */
+    section {
+        padding-top: 5rem !important; 
+        padding-bottom: 3rem !important;
     }
 }

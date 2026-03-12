@@ -82,8 +82,7 @@ document.addEventListener('componentLoaded', () => {
     highlightCurrentPage();
 });
 
-// --- LÓGICA DA GALERIA ---
-
+// --- CONFIGURAÇÃO DA GALERIA ---
 const fotos = [
     { url: 'https://images.unsplash.com/photo-1541599540903-216a46ca1ad0', caption: 'Border Collie na praia', categoria: 'caes' },
     { url: 'https://images.unsplash.com/photo-1583511655857-d19b40a7a54e', caption: 'Bulldog Francês estiloso', categoria: 'caes' },
@@ -97,10 +96,11 @@ const fotos = [
 
 let fotosFiltradas = [...fotos];
 
+// --- FUNÇÕES DA GALERIA ---
 function renderGallery() {
     const grid = document.getElementById('grid-galeria');
-    if (!grid) return; // Segurança caso não esteja na index
-    
+    if (!grid) return; 
+
     grid.style.opacity = '0';
     
     setTimeout(() => {
@@ -123,29 +123,27 @@ function filterGallery(categoria) {
     // 1. Atualizar Botões Visualmente
     const botoes = document.querySelectorAll('.filter-btn');
     botoes.forEach(btn => {
-        // Remove a classe ativa de todos
         btn.classList.remove('active-filter', 'border-brand-primary');
         btn.classList.add('border-gray-200', 'dark:border-gray-700');
     });
 
-    // Adiciona a classe ativa apenas no botão clicado usando o evento do navegador
-    const botaoClicado = event.currentTarget;
-    botaoClicado.classList.add('active-filter', 'border-brand-primary');
-    botaoClicado.classList.remove('border-gray-200', 'dark:border-gray-700');
-
-    // 2. Filtrar Dados (Aqui corrigimos o problema de 'caes' vs 'cães')
-    if (categoria === 'todos') {
-        fotosFiltradas = [...fotos];
-    } else {
-        fotosFiltradas = fotos.filter(f => f.categoria === categoria);
+    // 2. Destacar o botão clicado
+    if (event && event.currentTarget) {
+        const btnAtivo = event.currentTarget;
+        btnAtivo.classList.add('active-filter', 'border-brand-primary');
+        btnAtivo.classList.remove('border-gray-200', 'dark:border-gray-700');
     }
+
+    // 3. Filtrar Dados
+    fotosFiltradas = categoria === 'todos' ? [...fotos] : fotos.filter(f => f.categoria === categoria);
     
     renderGallery();
 }
 
-// Funções de Lightbox
+// --- LIGHTBOX ---
 function openLightbox(url, caption) {
     const lightbox = document.getElementById('lightbox');
+    if (!lightbox) return;
     document.getElementById('lightbox-img').src = url + '?auto=format&fit=crop&q=80&w=1200';
     document.getElementById('lightbox-caption').innerText = caption;
     lightbox.classList.remove('hidden');
@@ -153,12 +151,14 @@ function openLightbox(url, caption) {
 }
 
 function closeLightbox() {
-    document.getElementById('lightbox').classList.add('hidden');
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) lightbox.classList.add('hidden');
 }
 
-// Iniciar a galeria quando o documento estiver pronto
+// --- INICIALIZAÇÃO ---
 document.addEventListener('DOMContentLoaded', () => {
-    if(document.getElementById('grid-galeria')) {
+    // Garante que a galeria carrega se o elemento existir na página
+    if (document.getElementById('grid-galeria')) {
         renderGallery();
     }
 });
