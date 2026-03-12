@@ -91,11 +91,12 @@ nav a.text-brand-primary::after {
     }
 }
 
-/* Garante que palavras longas quebrem se necessário e não estoure a tela */
+/* Atualize estas regras no seu style.css */
 h1, h2, h3 {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    hyphens: auto;
+    overflow-wrap: normal;      /* Retorna ao padrão de não cortar palavras */
+    word-wrap: normal;
+    hyphens: none !important;   /* Desativa a hifenização automática (o "Tra-tamento") */
+    word-break: keep-all;       /* Garante que a palavra só quebre em espaços ou hífens reais */
 }
 
 /* Ajuste fino para containers no mobile */
