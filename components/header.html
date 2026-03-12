@@ -1,30 +1,41 @@
-﻿    <header class="fixed w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2">
-                <div class="bg-brand-primary p-2 rounded-full text-white">
-                    <i class="fas fa-paw"></i>
-                </div>
-                <div>
-                    <h1 class="font-bold text-xl leading-none">Simone Martins</h1>
-                    <p class="text-[10px] uppercase tracking-widest text-gray-500">Pet Sitter Profissional</p>
-                </div>
-            </a>
-            
-            <nav class="hidden md:flex gap-8 font-medium">
-                <a href="index.html#servicos" class="hover:text-brand-primary transition">Serviços</a>
-                <a href="#sobre" class="hover:text-brand-primary transition">Sobre</a>
-                <a href="index.html#galeria" class="hover:text-brand-primary transition">Galeria</a>
-                <a href="contato.html" class="hover:text-brand-primary transition">Contato</a>
-            </nav>
-
-            <div class="flex items-center gap-4">
-                <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition">
-                    <i class="fas fa-moon dark:hidden text-lg"></i>
-                    <i class="fas fa-sun hidden dark:block text-yellow-400 text-lg"></i>
-                </button>
-                <a href="contato.html" class="bg-brand-primary text-white px-6 py-2 rounded-full font-bold hover:bg-pink-700 transition hidden sm:block">
-                    Agendar Agora
-                </a>
+﻿<header class="fixed w-full z-50 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 shadow-sm">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center relative">
+        <a href="index.html" class="flex items-center gap-2">
+            <div class="bg-brand-primary p-2 rounded-full text-white">
+                <i class="fas fa-paw"></i>
             </div>
+            <div>
+                <h1 class="font-bold text-xl leading-none">Simone Martins</h1>
+                <p class="text-[10px] uppercase tracking-widest text-gray-500">Pet Sitter Profissional</p>
+            </div>
+        </a>
+        
+        <nav class="hidden md:flex gap-8 font-medium">
+            <a href="index.html#servicos" class="hover:text-brand-primary transition">Serviços</a>
+			<a href="#sobre" class="hover:text-brand-primary transition">Sobre</a>
+            <a href="index.html#galeria" class="hover:text-brand-primary transition">Galeria</a>
+            <a href="contato.html" class="hover:text-brand-primary transition">Contato</a>
+        </nav>
+
+        <div class="flex items-center gap-4">
+            <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                <i class="fas fa-moon dark:hidden text-lg text-slate-700"></i>
+                <i class="fas fa-sun hidden dark:block text-yellow-400 text-lg"></i>
+            </button>
+            
+            <button onclick="toggleMenu()" class="md:hidden p-2 text-slate-700 dark:text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+
+            <a href="contato.html" class="bg-brand-primary text-white px-6 py-2 rounded-full font-bold hover:bg-pink-700 transition hidden sm:block">
+                Agendar Agora
+            </a>
         </div>
-    </header>
+
+        <nav id="mobile-nav" class="menu-mobile md:hidden">
+            <a href="index.html#servicos" class="py-3 border-b border-gray-50 dark:border-gray-800">Serviços</a>
+            <a href="index.html#galeria" class="py-3 border-b border-gray-50 dark:border-gray-800">Galeria</a>
+            <a href="contato.html" class="py-3">Contato</a>
+        </nav>
+    </div>
+</header>

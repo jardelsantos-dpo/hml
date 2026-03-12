@@ -44,3 +44,40 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener('componentLoaded', () => {
     applyTheme();
 });
+
+function toggleMenu() {
+    const nav = document.getElementById('mobile-nav');
+    nav.classList.toggle('active');
+}
+
+// Fecha o menu ao clicar em um link (opcional)
+document.addEventListener('click', (e) => {
+    const nav = document.getElementById('mobile-nav');
+    if (nav && !nav.contains(e.target) && !e.target.closest('button')) {
+        nav.classList.remove('active');
+    }
+});
+
+// Função para destacar o link da página atual
+function highlightCurrentPage() {
+    const currentPath = window.location.pathname.split("/").pop() || "index.html";
+    const navLinks = document.querySelectorAll('nav a');
+
+    navLinks.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        
+        // Remove classes de destaque anteriores para garantir limpeza
+        link.classList.remove('text-brand-primary', 'font-bold');
+
+        // Se o link for igual ao caminho atual, adiciona o destaque
+        if (linkPath === currentPath) {
+            link.classList.add('text-brand-primary', 'font-bold');
+        }
+    });
+}
+
+// Modifique o seu EventListener existente para incluir a chamada
+document.addEventListener('componentLoaded', () => {
+    // ... suas outras chamadas (como aplicarTema) ...
+    highlightCurrentPage();
+});
